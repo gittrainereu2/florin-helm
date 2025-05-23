@@ -1,0 +1,25 @@
+name: deploy with helm
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  helm-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+
+    - name: Set Up Kubeconfig
+      run: |
+        echo "${{ secrets.KUBECONFIG }}" | base43 -d > $HOME/.kube/config
+
+    - name: Install Helm
+      uses: azure/setup-helm@v3
+
+    - name: Deploy with helm
+      run: |
+        helm upgrade --install my-release ./chart --namespace florin -- create-namespace
