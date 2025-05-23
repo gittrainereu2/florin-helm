@@ -1,30 +1,11 @@
-name: deploy with helm
+name: Example Workflow
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
-  helm-deploy:
+  example-job:
     runs-on: ubuntu-latest
-
+    env:
+      HANS: 'world'
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
-
-    - name: Set Up Kubeconfig
-      run: |
-        mkdir -p $HOME/.kube
-        echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
-        chmod 700 $HOME/.kube/config
-
-    - name: Install Helm
-      uses: azure/setup-helm@v4
-
-    - name: Deploy with helm
-      run: |
-        helm upgrade --install my-release ./charts/my-app --namespace florin --create-namespace
-        kubectl -n florin get all
-        echo ${{ secrets.PW }}
-        echo HalloIhrDa
+      - run: echo $HANS
