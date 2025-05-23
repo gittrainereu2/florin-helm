@@ -17,6 +17,7 @@ jobs:
       run: |
         mkdir -p $HOME/.kube
         echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
+        chmod 700 $HOME/.kube/config
 
     - name: Install Helm
       uses: azure/setup-helm@v3
