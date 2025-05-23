@@ -15,6 +15,7 @@ jobs:
 
     - name: Set Up Kubeconfig
       run: |
+        mkdir -p $HOME/.kube
         echo "${{ secrets.KUBECONFIG }}" | base43 -d > $HOME/.kube/config
 
     - name: Install Helm
