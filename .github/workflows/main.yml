@@ -20,7 +20,7 @@ jobs:
         chmod 700 $HOME/.kube/config
 
     - name: Install Helm
-      uses: azure/setup-helm@v3
+      uses: azure/setup-helm@v4
 
     - name: Deploy with helm
       run: |
