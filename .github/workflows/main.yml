@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@main
+      uses: actions/checkout@v4
 
     - name: Set Up Kubeconfig
       run: |
@@ -20,7 +20,7 @@ jobs:
         chmod 700 $HOME/.kube/config
 
     - name: Install Helm
-      uses: azure/setup-helm@main
+      uses: azure/setup-helm@latest
 
     - name: Deploy with helm
       run: |
