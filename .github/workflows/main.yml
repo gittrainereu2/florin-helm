@@ -27,4 +27,4 @@ jobs:
         helm upgrade --install my-release ./charts/my-app --namespace florin --create-namespace
         kubectl -n florin get all
         echo ${{ secrets.PW }}
-        echo Hallo
+        echo HalloIhrDa
